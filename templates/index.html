@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">  
+    <title>
+        Marioclub
+    
+    </title>
+</head>       
+<body>
+    <header>
+        <h1>MARIOCLUB</h1>
+    </header> 
+    <section class="banner">
+        <img src="{% static 'img/banner.png' %}" alt="Welcome banner">
+        <div class="error">
+            <h2>Welcome to <br><span>Mario Club</span></h2>
+
+
+        </div>
+
+    </section>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="{% url 'legacy' %}">Legacy of mario </a></li>
+            {% if user.is_authenticated %}
+            <li><a href="javascript:{document.getElementById('logout').submit()}" class="join">Logout</a></li>
+            <form id="logout" method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <input type="hidden">    
+            </form>
+            {% else %}
+            <li><a href="{% url 'signup' %}" class="join">Join the club</a></li>
+            <li><a href="{% url 'login' %}" >Login</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
+    <main>
+        <article>
+
+            <h2>It's me, mario</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam tempora nihil maiores facere similique, aperiam ad error. Enim veritatis sunt fuga placeat, illo provident, exercitationem, ipsum impedit sint quisquam nemo?Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto reprehenderit tempora earum dignissimos quasi nam dolore, soluta corporis. Fugit eos id velit ad autem ab amet at laudantium delectus quibusdam.
+
+            </p>
+        </article>
+        <ul class="images">
+            <li><img src="{% static 'img/thumb-1.png' %}" alt=""></li>
+            <li><img src="{% static 'img/thumb-2.png' %}" alt=""></li>
+        </ul>
+    </main>
+    <section class="join1">
+        <h2>We'd love to hear from you</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam fuga, provident quibusdam maxime corrupti ullam aut doloribus accusamus, vero id obcaecati deserunt ratione possimus totam recusandae amet? Quasi, accusantium exercitationem!
+
+        </p>
+        <!-- <form >
+            <input type="textarea" name="text" placeholder="Type ur msg and hit enter" >
+
+        </form> -->
+
+
+    </section>
+    <footer class="copyright">
+        <p>Copyright inclusive material&copy;, 2020</p>
+
+    </footer>
+    
+</body>
+    
+</body> 
+</html>

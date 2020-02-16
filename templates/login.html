@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">  
+    <title> MarioClub</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+            <h1>MARIOCLUB</h1>
+        </div>
+        </header> 
+        {% block body_block %}
+        <nav class="main-nav">
+        <ul>
+            <li><a href="{% url 'signup' %}">Join the club</a></li>
+            <li><a href="{% url 'legacy' %}">Legacy of mario </a></li>
+            <li><a href="{% url 'login' %}" class="join">Login</a></li>
+        </ul>
+    
+        </nav>
+        
+        <div class="container" >
+            <form method = "POST" action="{% url 'login' %}" >
+            <!-- {{ form.as_p }}     -->
+            {% csrf_token %}    
+            <br><br><br><br><br><br><br>
+            <h1 align="center">Log In</h1>
+            <label for="name">Username: </label>    
+            <input type="text" name="username" placeholder="Enter your username" required>
+            {% if error %}
+            {{ error }}
+            {% endif %}    
+            <br><br>
+            <label for="password1">Password: </label>
+            <input type="password" name="password1" placeholder=" Password" required>
+            <br><br>
+            <input type="submit" value="Login ">
+            
+            
+            </form>
+            </div>
+            
+        
+            {% endblock %}
+            <footer class="copyright">
+                <p>Copyright inclusive material&copy;, 2020</p>
+        
+            </footer>
+            
+    </body>
+</html>
